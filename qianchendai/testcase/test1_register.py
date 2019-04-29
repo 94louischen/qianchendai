@@ -9,7 +9,6 @@ from common.ConfTools import DoConf
 from common.LogTools import LogTools
 from common.SqlTools import DoMysql
 
-
 @ddt
 class TestRegister(unittest.TestCase):
     excel = DoExcel(constant.excel_dir, 'register')
@@ -20,10 +19,12 @@ class TestRegister(unittest.TestCase):
         cls.resp = Request()
         cls.con = DoMysql()
         cls.conf = DoConf(constant.globe_conf_dir)
+        cls.log = LogTools(__name__)
 
     @data(*cases)
     def test_register(self, case):
-        LogTools().info("当前执行的用例名称是:{}".format(case.title))
+        # self.log.info("当前执行的用例名称是:{}".format(case.title))
+        self.log.mylog.info("当前执行的用例名称是:{}".format(case.title))
         case_data = eval(context.param_replace(case.data))
 
         if case.check_sql:
@@ -35,7 +36,8 @@ class TestRegister(unittest.TestCase):
         url = 'http://' + self.conf.get_value('dev_info', 'domain_name') + self.conf.get_value('dev_info',
                                                                                                'path') + case.url
         res = self.resp.http_request(case.method, url, case_data, headers=case.headers)
-        LogTools().info("响应信息是:{}".format(res.text))
+        # self.log.info("响应信息是:{}".format(res.text))
+        self.log.mylog.info("响应信息是:{}".format(res.text))
         try:
             if res.json()['msg'] == '注册成功':
                 sql = 'select MobilePhone from member where MobilePhone = ' + case_data['mobilephone']
@@ -56,7 +58,6 @@ class TestRegister(unittest.TestCase):
                 # mobile_pwd = str(self.con.read_fetchone(sql2)['pwd'])
                 setattr(context.Context, 'member_id', member_id)
                 setattr(context.Context, 'mobile_phone', mobile_phone)
-                LogTools().info("反射的手机号是:{}".format(mobile_phone))
                 # setattr(context.Context, 'mobile_pwd', mobile_pwd)
             else:
                 self.assertEqual(case.expected, res.text)
@@ -65,7 +66,8 @@ class TestRegister(unittest.TestCase):
             result = 'fail'
             raise e
         finally:
-            LogTools().info("响应结果是:{}".format(result))
+            # self.log.info("响应结果是:{}".format(result))
+            self.log.mylog.info("响应结果是:{}".format(result))
             self.excel.write_excel(case.case_id, res.text, result)
 
     @classmethod
