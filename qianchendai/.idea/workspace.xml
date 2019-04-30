@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bad00522-1276-4a90-b623-05574f63befe" name="Default Changelist" comment="" />
+    <list default="true" id="bad00522-1276-4a90-b623-05574f63befe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,39 +14,12 @@
     <favorites_list name="qianchendai" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testcase/test1_register.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testcase/test2_login.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/LogTools.py">
+        <entry file="file://$PROJECT_DIR$/common/HttpRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="152">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -67,7 +42,6 @@
         <option value="$PROJECT_DIR$/testcase/test_login.py" />
         <option value="$PROJECT_DIR$/testcase/recharge.py" />
         <option value="$PROJECT_DIR$/testcase/test_recharge.py" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/testcase/test_register.py" />
         <option value="$PROJECT_DIR$/config/conf.cfg" />
         <option value="$PROJECT_DIR$/config/globe_conf.py" />
@@ -81,18 +55,21 @@
         <option value="$PROJECT_DIR$/testcase/test2_login.py" />
         <option value="$PROJECT_DIR$/common/SqlTools.py" />
         <option value="$PROJECT_DIR$/common/test.py" />
-        <option value="$PROJECT_DIR$/config/conf_test.cfg" />
         <option value="$PROJECT_DIR$/testcase/test3_recharge.py" />
         <option value="$PROJECT_DIR$/common/context.py" />
         <option value="$PROJECT_DIR$/testcase/test4_add_biao.py" />
         <option value="$PROJECT_DIR$/testcase/test5_add_audit.py" />
         <option value="$PROJECT_DIR$/testcase/test6_investment.py" />
+        <option value="$PROJECT_DIR$/config/conf_test.cfg" />
         <option value="$PROJECT_DIR$/testcase/test1_register.py" />
         <option value="$PROJECT_DIR$/common/LogTools.py" />
+        <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/venv/requirements.txt" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="250" />
     <option name="y" value="34" />
     <option name="width" value="1550" />
@@ -104,7 +81,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,10 +88,27 @@
               <item name="qianchendai" type="b2602c69:ProjectViewProjectNode" />
               <item name="qianchendai" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="qianchendai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qianchendai" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qianchendai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qianchendai" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qianchendai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qianchendai" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,9 +231,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
+        <item itemvalue="Python tests.Unittests in test1_register.py" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.context" />
-        <item itemvalue="Python tests.Unittests in test1_register.py" />
         <item itemvalue="Python tests.Unittests in test3_recharge.py" />
       </list>
     </recent_temporary>
@@ -256,37 +249,45 @@
       <option name="presentableId" value="Default" />
       <updated>1555130416813</updated>
     </task>
+    <task id="LOCAL-00001" summary="提交 requirements">
+      <created>1556602776596</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556602776597</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test1_register_py - 2019.04.25 at 00h 39m 25s.xml">
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 27m 35s.xml">
       <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_register_py - 2019.04.25 at 00h 42m 04s.xml">
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 28m 48s.xml">
       <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 00h 59m 52s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 33m 16s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 01h 00m 14s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 35m 40s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 01h 06m 55s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 42m 34s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 01h 13m 54s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 42m 41s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 09h 55m 19s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 51m 48s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 09h 57m 55s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 54m 32s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test3_recharge_py - 2019.04.25 at 09h 58m 23s.xml">
-      <configuration name="Unittests in test3_recharge.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 19h 56m 59s.xml">
+      <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_register_py - 2019.04.25 at 10h 41m 10s.xml">
+    <history-entry file="Unittests_in_test1_register_py - 2019.04.29 at 20h 03m 55s.xml">
       <configuration name="Unittests in test1_register.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -308,13 +309,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281471" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.11781609" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2710728" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.16874401" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2703739" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32950193" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32950193" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2703739" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.24425288" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32950193" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -322,12 +323,12 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49857143" visible="true" weight="0.22156085" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49857143" visible="true" weight="0.14014752" />
       <window_info id="Structure" order="1" sideWeight="0.50142854" side_tool="true" weight="0.12170706" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281471" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.24425288" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.49376798" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2710728" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,6 +345,10 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cfg" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="提交 requirements" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交 requirements" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -352,51 +357,34 @@
           <line>27</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/common/LogTools.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/common/LogTools.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testcase/test1_register.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testcase/test1_register.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/360zip$Temp/360$2/test_login.py" />
-    <entry file="file://$PROJECT_DIR$/testcase/test_register.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymysql/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="480" column="8" selection-start-line="480" selection-start-column="8" selection-end-line="480" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report/test_report.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ddt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3475">
-          <caret line="144" selection-start-line="144" selection-end-line="144" />
-          <folding>
-            <element signature="e#315#329#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/requests/sessions.py" />
-    <entry file="file://$PROJECT_DIR$/config/conf_uat.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/globe_conf.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/constant.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -410,18 +398,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/log_info.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16035">
-          <caret line="833" selection-start-line="833" selection-end-line="833" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Python/Python37-32/Lib/site-packages/pymysql/cursors.py" />
     <entry file="file://D:/Python/Python37-32/Lib/site-packages/pymysql/__init__.py" />
     <entry file="file://D:/Python/Python37-32/Lib/re.py" />
     <entry file="file://D:/Python/Python37-32/Lib/unittest/runner.py" />
-    <entry file="file://D:/Python/Python37-32/Lib/unittest/main.py" />
     <entry file="file://D:/Python/Python37-32/Lib/contextlib.py" />
     <entry file="file://D:/Python/Python37-32/Lib/site-packages/pymysql/connections.py" />
     <entry file="file://$USER_HOME$/Desktop/API_6/common/context.py" />
@@ -445,24 +425,7 @@
     <entry file="file://D:/Python/Python37-32/Lib/random.py" />
     <entry file="file://D:/Python/Python37-32/Lib/configparser.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1019756833/builtins.py" />
-    <entry file="file://$PROJECT_DIR$/common/ConfTools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding>
-            <element signature="e#23#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/API_7/common/context.py" />
-    <entry file="file://$PROJECT_DIR$/common/HttpRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/API_7/testcases/test_register.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_unittest_runner.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -504,13 +467,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/test.py" />
-    <entry file="file://$PROJECT_DIR$/config/conf_test.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Python/Python37-32/Lib/site-packages/ddt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -522,13 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="662" selection-start-line="662" selection-end-line="662" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python37-32/Lib/unittest/suite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
@@ -548,16 +497,6 @@
           <caret line="28" column="79" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="79" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -592,16 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcase/test1_register.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testcase/test2_login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -612,13 +541,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/constant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/ConfTools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="e#23#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/InterfaceAutoScript/testcases/test_recharge.py" />
+    <entry file="file://$USER_HOME$/Downloads/API/test_cases/test_recharge.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1338613859/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="3633" column="38" selection-start-line="3633" selection-start-column="12" selection-end-line="3633" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/API_8/common/logger.py" />
+    <entry file="file://$PROJECT_DIR$/venv/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#24#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/LogTools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+        <state relative-caret-position="353">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/log_info.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="7632" column="80" selection-start-line="7632" selection-start-column="72" selection-end-line="7632" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/conf_test.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37-32/Lib/unittest/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37-32/Lib/unittest/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37-32/Lib/unittest/suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/test1_register.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="953">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/HttpRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
