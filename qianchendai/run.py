@@ -1,9 +1,13 @@
 # -*- coding:utf-8 -*-
 
+import sys
 import unittest
 import HTMLTestRunnerNew
 import os
 from common import constant
+
+sys.path.append('./')   #项目的根目录地址
+
 
 
 class RunTestCase:
