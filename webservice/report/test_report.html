@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> chenxuan</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-04-30 14:03:39</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:03.020172</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 74，通过 5，失败 1，错误 68，通过率= 6.76%</p>
+
+<p class='description'>前程贷的登录、注册、充值接口测试报告</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 6.76% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 1 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 5 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 74 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test1_register.TestRegister</td>
+    <td class="text-center">6</td>
+    <td class="text-center">5</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',6)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_1</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_2</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_3</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft1_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_register_4</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_4'>失败</button>
+    <div id='div_ft1_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_4'>失败</button>
+    <div id='div_ft1_4' class="collapse in" align="left">
+    <pre>
+    
+ft1_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test1_register.py", line 67, in test_register
+    raise e
+  File "E:\work\qianchendai\testcase\test1_register.py", line 63, in test_register
+    self.assertEqual(case.expected, res.text)
+AssertionError: '{"status":1,"code":"10001","data":null,"msg":"注册成功"}' != '{"status":0,"code":"20110","data":null,"msg":"手机号码已被注册"}'
+- {"status":1,"code":"10001","data":null,"msg":"注册成功"}
+?           ^           ---                       --
++ {"status":0,"code":"20110","data":null,"msg":"手机号码已被注册"}
+?           ^         +++                       ++++++
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_5</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt1_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_6</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test2_login.TestLogin</td>
+    <td class="text-center">5</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">5</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',5)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='ft2_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse in" align="left">
+    <pre>
+    
+ft2_1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test2_login.py", line 23, in test_login
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_2</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_2'>错误</button>
+    <div id='div_ft2_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_2'>错误</button>
+    <div id='div_ft2_2' class="collapse in" align="left">
+    <pre>
+    
+ft2_2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test2_login.py", line 23, in test_login
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_3</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_3'>错误</button>
+    <div id='div_ft2_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_3'>错误</button>
+    <div id='div_ft2_3' class="collapse in" align="left">
+    <pre>
+    
+ft2_3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test2_login.py", line 23, in test_login
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_4</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_4'>错误</button>
+    <div id='div_ft2_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_4'>错误</button>
+    <div id='div_ft2_4' class="collapse in" align="left">
+    <pre>
+    
+ft2_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test2_login.py", line 23, in test_login
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_5</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_5'>错误</button>
+    <div id='div_ft2_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_5'>错误</button>
+    <div id='div_ft2_5' class="collapse in" align="left">
+    <pre>
+    
+ft2_5: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test2_login.py", line 23, in test_login
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test3_recharge.TestRecharge</td>
+    <td class="text-center">10</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">10</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',10)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='ft3_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_1'>错误</button>
+    <div id='div_ft3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_1'>错误</button>
+    <div id='div_ft3_1' class="collapse in" align="left">
+    <pre>
+    
+ft3_1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_2'>错误</button>
+    <div id='div_ft3_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_2'>错误</button>
+    <div id='div_ft3_2' class="collapse in" align="left">
+    <pre>
+    
+ft3_2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_3'>错误</button>
+    <div id='div_ft3_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_3'>错误</button>
+    <div id='div_ft3_3' class="collapse in" align="left">
+    <pre>
+    
+ft3_3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_4'>错误</button>
+    <div id='div_ft3_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_4'>错误</button>
+    <div id='div_ft3_4' class="collapse in" align="left">
+    <pre>
+    
+ft3_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_5'>错误</button>
+    <div id='div_ft3_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_5'>错误</button>
+    <div id='div_ft3_5' class="collapse in" align="left">
+    <pre>
+    
+ft3_5: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_6'>错误</button>
+    <div id='div_ft3_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_6'>错误</button>
+    <div id='div_ft3_6' class="collapse in" align="left">
+    <pre>
+    
+ft3_6: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_7'>错误</button>
+    <div id='div_ft3_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_7'>错误</button>
+    <div id='div_ft3_7' class="collapse in" align="left">
+    <pre>
+    
+ft3_7: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_8'>错误</button>
+    <div id='div_ft3_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_8'>错误</button>
+    <div id='div_ft3_8' class="collapse in" align="left">
+    <pre>
+    
+ft3_8: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_9'>错误</button>
+    <div id='div_ft3_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_9'>错误</button>
+    <div id='div_ft3_9' class="collapse in" align="left">
+    <pre>
+    
+ft3_9: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_recharge_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_10'>错误</button>
+    <div id='div_ft3_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_10'>错误</button>
+    <div id='div_ft3_10' class="collapse in" align="left">
+    <pre>
+    
+ft3_10: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test3_recharge.py", line 25, in test_recharge
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test4_add_biao.TestAddBd</td>
+    <td class="text-center">24</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">24</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',24)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='ft4_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_1'>错误</button>
+    <div id='div_ft4_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_1'>错误</button>
+    <div id='div_ft4_1' class="collapse in" align="left">
+    <pre>
+    
+ft4_1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_2'>错误</button>
+    <div id='div_ft4_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_2'>错误</button>
+    <div id='div_ft4_2' class="collapse in" align="left">
+    <pre>
+    
+ft4_2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_3'>错误</button>
+    <div id='div_ft4_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_3'>错误</button>
+    <div id='div_ft4_3' class="collapse in" align="left">
+    <pre>
+    
+ft4_3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_4'>错误</button>
+    <div id='div_ft4_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_4'>错误</button>
+    <div id='div_ft4_4' class="collapse in" align="left">
+    <pre>
+    
+ft4_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_5'>错误</button>
+    <div id='div_ft4_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_5'>错误</button>
+    <div id='div_ft4_5' class="collapse in" align="left">
+    <pre>
+    
+ft4_5: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_6'>错误</button>
+    <div id='div_ft4_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_6'>错误</button>
+    <div id='div_ft4_6' class="collapse in" align="left">
+    <pre>
+    
+ft4_6: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_7'>错误</button>
+    <div id='div_ft4_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_7'>错误</button>
+    <div id='div_ft4_7' class="collapse in" align="left">
+    <pre>
+    
+ft4_7: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_8'>错误</button>
+    <div id='div_ft4_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_8'>错误</button>
+    <div id='div_ft4_8' class="collapse in" align="left">
+    <pre>
+    
+ft4_8: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_9'>错误</button>
+    <div id='div_ft4_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_9'>错误</button>
+    <div id='div_ft4_9' class="collapse in" align="left">
+    <pre>
+    
+ft4_9: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_10'>错误</button>
+    <div id='div_ft4_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_10'>错误</button>
+    <div id='div_ft4_10' class="collapse in" align="left">
+    <pre>
+    
+ft4_10: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_11'>错误</button>
+    <div id='div_ft4_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_11'>错误</button>
+    <div id='div_ft4_11' class="collapse in" align="left">
+    <pre>
+    
+ft4_11: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_12</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_12'>错误</button>
+    <div id='div_ft4_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_12'>错误</button>
+    <div id='div_ft4_12' class="collapse in" align="left">
+    <pre>
+    
+ft4_12: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_13</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_13'>错误</button>
+    <div id='div_ft4_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_13'>错误</button>
+    <div id='div_ft4_13' class="collapse in" align="left">
+    <pre>
+    
+ft4_13: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_14' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_14</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_14'>错误</button>
+    <div id='div_ft4_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_14'>错误</button>
+    <div id='div_ft4_14' class="collapse in" align="left">
+    <pre>
+    
+ft4_14: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_15' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_15</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_15'>错误</button>
+    <div id='div_ft4_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_15'>错误</button>
+    <div id='div_ft4_15' class="collapse in" align="left">
+    <pre>
+    
+ft4_15: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_16' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_16</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_16'>错误</button>
+    <div id='div_ft4_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_16'>错误</button>
+    <div id='div_ft4_16' class="collapse in" align="left">
+    <pre>
+    
+ft4_16: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_17' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_17</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_17'>错误</button>
+    <div id='div_ft4_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_17'>错误</button>
+    <div id='div_ft4_17' class="collapse in" align="left">
+    <pre>
+    
+ft4_17: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_18' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_18</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_18'>错误</button>
+    <div id='div_ft4_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_18'>错误</button>
+    <div id='div_ft4_18' class="collapse in" align="left">
+    <pre>
+    
+ft4_18: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_19' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_19</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_19'>错误</button>
+    <div id='div_ft4_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_19'>错误</button>
+    <div id='div_ft4_19' class="collapse in" align="left">
+    <pre>
+    
+ft4_19: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_20' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_20</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_20'>错误</button>
+    <div id='div_ft4_20' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_20' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_20'>错误</button>
+    <div id='div_ft4_20' class="collapse in" align="left">
+    <pre>
+    
+ft4_20: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_21' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_21</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_21'>错误</button>
+    <div id='div_ft4_21' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_21' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_21'>错误</button>
+    <div id='div_ft4_21' class="collapse in" align="left">
+    <pre>
+    
+ft4_21: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_22' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_22</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_22'>错误</button>
+    <div id='div_ft4_22' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_22' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_22'>错误</button>
+    <div id='div_ft4_22' class="collapse in" align="left">
+    <pre>
+    
+ft4_22: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_23' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_23</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_23'>错误</button>
+    <div id='div_ft4_23' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_23' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_23'>错误</button>
+    <div id='div_ft4_23' class="collapse in" align="left">
+    <pre>
+    
+ft4_23: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_24' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_bd_24</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_24'>错误</button>
+    <div id='div_ft4_24' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_24' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_24'>错误</button>
+    <div id='div_ft4_24' class="collapse in" align="left">
+    <pre>
+    
+ft4_24: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test4_add_biao.py", line 25, in test_add_bd
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test5_add_audit.TestAudit</td>
+    <td class="text-center">13</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">13</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',13)" class="detail" id='c5'>详细</a></td>
+</tr>
+
+<tr id='ft5_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_1'>错误</button>
+    <div id='div_ft5_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_1'>错误</button>
+    <div id='div_ft5_1' class="collapse in" align="left">
+    <pre>
+    
+ft5_1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_2'>错误</button>
+    <div id='div_ft5_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_2'>错误</button>
+    <div id='div_ft5_2' class="collapse in" align="left">
+    <pre>
+    
+ft5_2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_3'>错误</button>
+    <div id='div_ft5_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_3'>错误</button>
+    <div id='div_ft5_3' class="collapse in" align="left">
+    <pre>
+    
+ft5_3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_4'>错误</button>
+    <div id='div_ft5_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_4'>错误</button>
+    <div id='div_ft5_4' class="collapse in" align="left">
+    <pre>
+    
+ft5_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_5'>错误</button>
+    <div id='div_ft5_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_5'>错误</button>
+    <div id='div_ft5_5' class="collapse in" align="left">
+    <pre>
+    
+ft5_5: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_6'>错误</button>
+    <div id='div_ft5_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_6'>错误</button>
+    <div id='div_ft5_6' class="collapse in" align="left">
+    <pre>
+    
+ft5_6: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_7'>错误</button>
+    <div id='div_ft5_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_7'>错误</button>
+    <div id='div_ft5_7' class="collapse in" align="left">
+    <pre>
+    
+ft5_7: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_8'>错误</button>
+    <div id='div_ft5_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_8'>错误</button>
+    <div id='div_ft5_8' class="collapse in" align="left">
+    <pre>
+    
+ft5_8: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_9'>错误</button>
+    <div id='div_ft5_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_9'>错误</button>
+    <div id='div_ft5_9' class="collapse in" align="left">
+    <pre>
+    
+ft5_9: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_10'>错误</button>
+    <div id='div_ft5_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_10'>错误</button>
+    <div id='div_ft5_10' class="collapse in" align="left">
+    <pre>
+    
+ft5_10: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_11'>错误</button>
+    <div id='div_ft5_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_11'>错误</button>
+    <div id='div_ft5_11' class="collapse in" align="left">
+    <pre>
+    
+ft5_11: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_12</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_12'>错误</button>
+    <div id='div_ft5_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_12'>错误</button>
+    <div id='div_ft5_12' class="collapse in" align="left">
+    <pre>
+    
+ft5_12: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_audit_13</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_13'>错误</button>
+    <div id='div_ft5_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_13'>错误</button>
+    <div id='div_ft5_13' class="collapse in" align="left">
+    <pre>
+    
+ft5_13: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test5_add_audit.py", line 24, in test_audit
+    LogTools().info("当前执行的用例名称是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test6_investment.Investment</td>
+    <td class="text-center">16</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">16</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c6',16)" class="detail" id='c6'>详细</a></td>
+</tr>
+
+<tr id='ft6_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_1'>错误</button>
+    <div id='div_ft6_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_1'>错误</button>
+    <div id='div_ft6_1' class="collapse in" align="left">
+    <pre>
+    
+ft6_1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_2'>错误</button>
+    <div id='div_ft6_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_2'>错误</button>
+    <div id='div_ft6_2' class="collapse in" align="left">
+    <pre>
+    
+ft6_2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_3'>错误</button>
+    <div id='div_ft6_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_3'>错误</button>
+    <div id='div_ft6_3' class="collapse in" align="left">
+    <pre>
+    
+ft6_3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_4'>错误</button>
+    <div id='div_ft6_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_4'>错误</button>
+    <div id='div_ft6_4' class="collapse in" align="left">
+    <pre>
+    
+ft6_4: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_5'>错误</button>
+    <div id='div_ft6_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_5'>错误</button>
+    <div id='div_ft6_5' class="collapse in" align="left">
+    <pre>
+    
+ft6_5: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_6'>错误</button>
+    <div id='div_ft6_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_6'>错误</button>
+    <div id='div_ft6_6' class="collapse in" align="left">
+    <pre>
+    
+ft6_6: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_7'>错误</button>
+    <div id='div_ft6_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_7'>错误</button>
+    <div id='div_ft6_7' class="collapse in" align="left">
+    <pre>
+    
+ft6_7: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_8'>错误</button>
+    <div id='div_ft6_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_8'>错误</button>
+    <div id='div_ft6_8' class="collapse in" align="left">
+    <pre>
+    
+ft6_8: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_9'>错误</button>
+    <div id='div_ft6_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_9'>错误</button>
+    <div id='div_ft6_9' class="collapse in" align="left">
+    <pre>
+    
+ft6_9: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_10'>错误</button>
+    <div id='div_ft6_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_10'>错误</button>
+    <div id='div_ft6_10' class="collapse in" align="left">
+    <pre>
+    
+ft6_10: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_11'>错误</button>
+    <div id='div_ft6_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_11'>错误</button>
+    <div id='div_ft6_11' class="collapse in" align="left">
+    <pre>
+    
+ft6_11: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_12</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_12'>错误</button>
+    <div id='div_ft6_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_12'>错误</button>
+    <div id='div_ft6_12' class="collapse in" align="left">
+    <pre>
+    
+ft6_12: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_13</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_13'>错误</button>
+    <div id='div_ft6_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_13'>错误</button>
+    <div id='div_ft6_13' class="collapse in" align="left">
+    <pre>
+    
+ft6_13: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_14' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_14</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_14'>错误</button>
+    <div id='div_ft6_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_14'>错误</button>
+    <div id='div_ft6_14' class="collapse in" align="left">
+    <pre>
+    
+ft6_14: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_15' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_15</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_15'>错误</button>
+    <div id='div_ft6_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_15'>错误</button>
+    <div id='div_ft6_15' class="collapse in" align="left">
+    <pre>
+    
+ft6_15: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_16' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Investment_16</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_16'>错误</button>
+    <div id='div_ft6_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_16'>错误</button>
+    <div id='div_ft6_16' class="collapse in" align="left">
+    <pre>
+    
+ft6_16: Traceback (most recent call last):
+  File "D:\Python\Python37-32\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\work\qianchendai\testcase\test6_investment.py", line 25, in test_Investment
+    LogTools().info("当前用例标题是:{}".format(case.title))
+TypeError: __init__() missing 1 required positional argument: 'login_name'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>74</td>
+    <td>5</td>
+    <td>1</td>
+    <td>68</td>
+    <td>通过率：6.76%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>
