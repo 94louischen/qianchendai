@@ -11,7 +11,7 @@ from common.SqlTools import DoMysql
 
 @ddt
 class SendMCode(unittest.TestCase):
-    excel = DoExcel(constant.excel_dir, 'SendMCode')
+    excel = DoExcel(constant.excel_dir, 'Register')
     cases = excel.read_excel()
 
     @classmethod
@@ -25,20 +25,14 @@ class SendMCode(unittest.TestCase):
     @data(*cases)
     def test_sendCode(self, case):
         self.log.mylog.info("当前执行的用例名称是:{}".format(case.title))
+        case_data = eval(context.param_replace(case.data))
         try:
-            case_data = eval(context.param_replace(case.data))
             resp = self.WS.web_services(case.url, case_data, case.method)
             self.assertEqual(case.expected, resp)
             result = "pass"
         except AssertionError as e:
             result = "fail"
             raise e
-        else:
-            if case.check_sql:
-                sql_result = self.sql.read_fetchone(context.param_replace(case.check_sql))
-                Fverify_code = sql_result["Fverify_code"]
-                # 把验证码反射到context中的Context类
-                setattr(context.Context, "Fverify_code", Fverify_code)
         finally:
             self.log.mylog.info("当前执行的用例执情况:{}".format(result))
             self.excel.write_excel(case.case_id, str(resp), result)

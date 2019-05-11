@@ -1,6 +1,8 @@
 import pymysql
 from common.ConfTools import DoConf
 from common import constant
+import datetime
+from decimal import *
 
 
 class DoMysql:
@@ -12,7 +14,7 @@ class DoMysql:
                                      conf.get_value('dev_db', 'username'),
                                      conf.get_value('dev_db', 'pwd'),
                                      conf.get_value('dev_db', 'dbName'),
-                                     cursorclass=pymysql.cursors.DictCursor)  #将游标执行的结果以字典返回
+                                     cursorclass=pymysql.cursors.DictCursor)  # 将游标执行的结果以字典返回
         # 使用 cursor() 方法创建一个游标对象 cursor
         self.cursor = self.db.cursor()
 
@@ -20,15 +22,25 @@ class DoMysql:
     def read_fetchone(self, sql):
         self.cursor.execute(sql)
         datas = self.cursor.fetchone()
+        for key in datas:
+            if isinstance(datas[key], datetime.date):
+                datas[key] = datas[key].strftime("%Y-%m-%d %H:%M:%S")
+            elif isinstance(datas[key], Decimal):
+                datas[key] = str(datas[key])
         self.db.commit()
         return datas
 
     # 把多行结果以字典的形式返回一个大列表
-    def read_fetchall(self,sql):
+    def read_fetchall(self, sql):
         self.cursor.execute(sql)
         datas = self.cursor.fetchall()
         self.db.commit()
         return datas
+
+    # 修改数据库
+    def update(self, sql):
+        self.cursor.execute(sql)
+        self.db.commit()
 
     def close(self):
         self.cursor.close()
@@ -36,8 +48,7 @@ class DoMysql:
 
 
 if __name__ == '__main__':
-    sql = "SELECT * FROM member WHERE MobilePhone = 18826587140"
+    sql = "select * FROM t_mvcode_info_1 WHERE Fmobile_no = 18826587147"
     db = DoMysql()
     result = db.read_fetchone(sql)
-    print(type(result), result['leaveamount'])
-    print(len(result))
+    print(type(result['Fexpired_time']), result['Fexpired_time'])
