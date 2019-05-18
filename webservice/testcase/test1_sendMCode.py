@@ -11,23 +11,25 @@ from common.SqlTools import DoMysql
 
 @ddt
 class SendMCode(unittest.TestCase):
-    excel = DoExcel(constant.excel_dir, 'SendMCode')
+    excel = DoExcel(constant.excel_dir, 'sendmcode')
     cases = excel.read_excel()
 
     @classmethod
     def setUpClass(cls):
         cls.WS = WebService()
-        cls.sql = DoMysql()
+        cls.sql = DoMysql("dbName")
         cls.cf = DoConf(constant.globe_conf_dir)
         cls.log = LogTools(__name__)
         cls.log.mylog.info("开始测试")
+        setattr(context.Context, "mobile", context.create_phone())
 
     @data(*cases)
     def test_sendCode(self, case):
         self.log.mylog.info("当前执行的用例名称是:{}".format(case.title))
+        case_data = eval(context.param_replace(case.data))
+        resp = self.WS.web_services(case.url, case_data, case.method)
         try:
-            case_data = eval(context.param_replace(case.data))
-            resp = self.WS.web_services(case.url, case_data, case.method)
+            global result
             self.assertEqual(case.expected, resp)
             result = "pass"
         except AssertionError as e:

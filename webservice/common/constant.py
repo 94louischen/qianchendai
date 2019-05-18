@@ -9,7 +9,7 @@ conf_uat_dir = os.path.join(root_dir, 'config', 'conf_uat.cfg')
 
 globe_conf_dir = os.path.join(root_dir, 'config', 'globe_conf.cfg')
 
-excel_dir = os.path.join(root_dir, 'data', 'cases.xlsx')
+excel_dir = os.path.join(root_dir, 'data', 'testcases.xlsx')
 
 case_dir = os.path.join(root_dir, 'testcase')
 print(case_dir)

@@ -30,7 +30,7 @@ class WebService:
 
 
 if __name__ == '__main__':
-    url = "http://120.24.235.105:9010/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl"
+    url = "/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl"
     params = {'verify_code': '414637', 'user_id': None, 'channel_id': '1', 'pwd': '123456', 'mobile': '18826587147',
               'ip': '192.168.1.13'}
-    res = WebService().web_services(url, params, "sendMCode")
+    res = WebService().web_services(url, params, "userRegister")

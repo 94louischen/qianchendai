@@ -7,13 +7,13 @@ from decimal import *
 
 class DoMysql:
 
-    def __init__(self):
+    def __init__(self, dbName):
         conf = DoConf(constant.globe_conf_dir)
         # 打开数据库连接
         self.db = pymysql.Connection(conf.get_value('dev_db', 'host'),
                                      conf.get_value('dev_db', 'username'),
                                      conf.get_value('dev_db', 'pwd'),
-                                     conf.get_value('dev_db', 'dbName'),
+                                     conf.get_value('dev_db', dbName),
                                      cursorclass=pymysql.cursors.DictCursor)  # 将游标执行的结果以字典返回
         # 使用 cursor() 方法创建一个游标对象 cursor
         self.cursor = self.db.cursor()

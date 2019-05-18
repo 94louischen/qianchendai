@@ -47,5 +47,5 @@ class DoExcel:
 
 
 if __name__ == '__main__':
-    do_excel = DoExcel(constant.excel_dir, 'SendMCode')
+    do_excel = DoExcel(constant.excel_dir, 'sendmcode')
     do_excel.write_excel(1, 'testcase', 'pase')

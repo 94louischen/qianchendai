@@ -7,35 +7,39 @@ from common.ExcelTools import DoExcel
 from common.ConfTools import DoConf
 from common.LogTools import LogTools
 from common.SqlTools import DoMysql
+from common.readom_card import IdNumber
+import random
 
 
 @ddt
-class Register(unittest.TestCase):
-    excel = DoExcel(constant.excel_dir, 'register')
+class UserAuth(unittest.TestCase):
+    excel = DoExcel(constant.excel_dir, 'userauth')
     cases = excel.read_excel()
 
     @classmethod
     def setUpClass(cls):
         cls.WS = WebService()
-        cls.con = DoMysql("dbName1")
+        cls.sql = DoMysql("dbName1")
         cls.cf = DoConf(constant.globe_conf_dir)
         cls.log = LogTools(__name__)
         cls.log.mylog.info("开始测试")
-        setattr(context.Context, "user_id", context.create_name())
+        setattr(context.Context, "cre_id", IdNumber.generate_id(random.randint(0, 1)))
 
     @data(*cases)
-    def test_Register(self, case):
+    def test_UserAuth(self, case):
         self.log.mylog.info("当前执行的用例名称是:{}".format(case.title))
+
+        if case.check_sql:
+            global count
+            count = self.sql.read_fetchone(case.check_sql)["count(*)"]
         case_data = eval(context.param_replace(case.data))
         resp = self.WS.web_services(case.url, case_data, case.method)
         try:
             global result
             self.assertEqual(case.expected, resp)
             if resp == "ok":
-                sql_result = self.con.read_fetchone(context.param_replace(case.check_sql))
-                uid = str(sql_result["Fuid"])
-                # 把验证码反射到context中的Context类
-                setattr(context.Context, "uid", uid)
+                new_count = self.sql.read_fetchone(case.check_sql)["count(*)"]
+                self.assertEqual(count, new_count - 1)
             result = "pass"
         except AssertionError as e:
             result = "fail"
