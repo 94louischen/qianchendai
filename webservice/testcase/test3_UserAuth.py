@@ -50,4 +50,5 @@ class UserAuth(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        cls.sql.close()
         cls.log.mylog.info("结束测试")

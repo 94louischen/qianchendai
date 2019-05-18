@@ -42,6 +42,7 @@ class DoExcel:
         sheet = self.lw[self.sheet_name]
         sheet.cell(case_id + 1, 7).value = actual
         sheet.cell(case_id + 1, 8).value = result
+        print("写入成功")
         self.lw.save(self.files)
         self.lw.close()
 

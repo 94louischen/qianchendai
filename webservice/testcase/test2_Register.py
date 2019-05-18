@@ -46,4 +46,5 @@ class Register(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        cls.con.close()
         cls.log.mylog.info("结束测试")
